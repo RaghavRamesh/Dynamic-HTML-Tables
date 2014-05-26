@@ -8,13 +8,13 @@ function addRows(tbl) {
 	}
 }
 
-function addColumns(tbl) {
+function addColumns(tbl, startDate, endDate) {
 	// Appends further columns to the table
 
 	var tableHeadObject = tbl.tHead;
 	var firstRowTH = document.createElement('th');
 	firstRowTH.setAttribute('colspan', 5);
-	firstRowTH.innerHTML = "Period";
+	firstRowTH.innerHTML = "Period - " + startDate + " - " + endDate;
 	tableHeadObject.rows[0].appendChild(firstRowTH);
 
 	var subRow1TH = document.createElement('th');
