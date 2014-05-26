@@ -161,7 +161,14 @@ function changeTableLook(interval) {
 } 
 
 var submit = function() {
-	// Calls the function that updates the look of the table when the submit button is pressed
+	// Calls the function that updates the look of the table when the submit button is pressed after input validation
+	
+	// Validate from and to date
+	var fromDate = document.getElementById('dateFromInput').value;
+	var toDate = document.getElementById('dateToInput').value;
+	if (fromDate > toDate) {
+		return;
+	}
 
 	changeTableLook(document.getElementById('chooseInterval').value);
 };
