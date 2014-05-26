@@ -1,0 +1,73 @@
+<html>
+<body>
+  <label>Date From</label><br/>
+  <input type="date" id="dateFromInput"></body><br/><br/> 
+  <label>Date To</label><br/>
+  <input type="date" id="dateToInput"></body>
+  <hr/>
+  <label>Choose interval</label><br/>
+  <select id="chooseInterval">
+    <option value="week">Week</option>
+    <option value="month">Month</option>
+    <option value="year">Year</option>
+  </select>  
+  <br/><br/>
+  <button type="submit" id="submitFilter" onclick="submit()">Submit</button>
+  <hr/><hr/>
+  <table id="mytable" border="1" style="width:300px">
+    <thead>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th rowspan="2">Designation</th>
+      <th colspan="5">Period</th>
+    </tr>
+    <tr>  
+      <th>Chargeable</th>
+      <th>Non-Chargeable</th>
+      <th>Non-Available</th>
+      <th>Total</th>
+      <th>Utilisation</th>
+    </tr>  
+    </thead>
+    <tbody>
+    <tr>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+    </tr>
+    <tr>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+    </tr>
+    <tr>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+    </tr>
+    <tr>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+      <td>Some random value</td>
+    </tr>
+    </tbody>
+  </table>
+</body>
+<script src="../js/table.js"></script>
+</html>
