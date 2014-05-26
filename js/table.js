@@ -50,6 +50,14 @@ function convertToDate(date) {
 	return new Date(date[0], date[1] - 1, date[2]);
 } 
 
+function convertDateToString(date) {
+	// converts date to string
+
+	date.setMonth(date.getMonth() + 1);
+	date = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
+	return date;
+}
+
 function dateStringToUTC(dateString) {
 	// Converts date string to UTC format
 
