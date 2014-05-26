@@ -60,6 +60,15 @@ function dateStringToUTC(dateString) {
 	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
 }
 
+function deleteColumn(tbl, rowNumber, numberOfColumns) {
+	// Deletes column based on parameters
+
+	var row = tbl.rows[rowNumber];
+	for (var i = 0; i < numberOfColumns; i++) {
+		row.deleteCell(-1);
+	}
+}
+
 function getDayString(date) {
 	// Returns the day of the date in string format 
 
