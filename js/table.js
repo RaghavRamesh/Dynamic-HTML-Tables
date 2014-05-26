@@ -4,7 +4,7 @@ function addRows(tbl) {
 	var tableBodyObject = tbl.tBodies[0];
 	for (var i = 0; i < tableBodyObject.rows.length; i++) {
 		var newCell = tableBodyObject.rows[i].insertCell(-1);
-		newCell.innerHTML = 'testing';
+		newCell.innerHTML = 'testing' +  i;
 	}
 }
 
@@ -58,15 +58,6 @@ function dateStringToUTC(dateString) {
 	var mm = parseInt(dateStringArray[1], 10);
 	var dd = parseInt(dateStringArray[2], 10);
 	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
-}
-
-function deleteColumn(tbl, rowNumber, numberOfColumns) {
-	// Deletes column based on parameters
-
-	var row = tbl.rows[rowNumber];
-	for (var i = 0; i < numberOfColumns; i++) {
-		row.deleteCell(-1);
-	}
 }
 
 function resetTable(tbl)
@@ -149,7 +140,6 @@ function changeTableLook(interval) {
 		for (var i = 0; i < differenceInWeeks; i++) {
 			addColumns(tbl);	
 		}
-
 	} else if (interval == "month") {
 
 	} else if (interval == "year") {
