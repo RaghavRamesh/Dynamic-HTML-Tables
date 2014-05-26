@@ -137,7 +137,7 @@ function changeTableLook(interval) {
 
 		// b. Calculate remaining days of that week
 		var numberOfRemainingDays = getRemainingDaysInTheWeek(convertedBeginningDate);
-		// console.log("numberOfRemainingDays: ", numberOfRemainingDays);
+
 		// 2. Update new 'fromDate'
 		var newBeginningDate = setDateOffset(convertedBeginningDate, numberOfRemainingDays);
 
