@@ -65,10 +65,25 @@ function resetTable(tbl)
 	// Resets the table after submit
 
 	// Delete Period
-	deleteColumn(tbl, 0, 1);	
-
-	// Delete the 5 subcolumns of period
-	deleteColumn(tbl, 1, 5);
+	while (tbl.rows[0].cells.length > 2) {
+		console.log("comes here");
+		tbl.rows[0].deleteCell(-1);	
+	}
+	
+	// Delete the 5 sub headings
+	while (tbl.rows[1].cells.length > 0) {
+		for (var i = 0; i < 5; i++) {
+			tbl.rows[1].deleteCell(-1);
+		}	
+	}
+		
+	
+	// Delete the rows below the 5 columns
+	for (var rowNumber = 2; rowNumber < tbl.rows.length; rowNumber++) {
+		while (tbl.rows[rowNumber].cells.length > 2) {
+			tbl.rows[rowNumber].deleteCell(-1);
+		}
+	}
 }
 
 function getDayString(date) {
