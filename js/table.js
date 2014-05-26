@@ -44,7 +44,7 @@ function addColumns(tbl, startDate, endDate) {
 }
 
 function convertToDate(date) {
-	// converts a date string to JS Date() object
+	// converts an html date input to JS Date() object
 
 	date = date.toString().split("-");
 	return new Date(date[0], date[1] - 1, date[2]);
