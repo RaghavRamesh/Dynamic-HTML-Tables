@@ -76,10 +76,10 @@ function getDifferenceInWeeks(fromDate, toDate) {
 	return Math.ceil((d2 - d1) / oneweek);
 }
 
-function getNewBeginningDate(date, numberOfRemainingDays) {
-	// Returns the Sunday of the following week
+function setDateOffset(date, offset) {
+	// Returns the date after adding the offset
 
-	date.setDate(date.getDate() + numberOfRemainingDays + 1);
+	date.setDate(date.getDate() + offset + 1);
 	return date;
 }
 
@@ -139,7 +139,7 @@ function changeTableLook(interval) {
 		var numberOfRemainingDays = getRemainingDaysInTheWeek(convertedBeginningDate);
 		// console.log("numberOfRemainingDays: ", numberOfRemainingDays);
 		// 2. Update new 'fromDate'
-		var newBeginningDate = getNewBeginningDate(convertedBeginningDate, numberOfRemainingDays);
+		var newBeginningDate = setDateOffset(convertedBeginningDate, numberOfRemainingDays);
 
 		// 3. Call calculateDifferenceInWeeks method
 		// Convert to input form in order to typecast into getDifferenceInWeeks parameters
