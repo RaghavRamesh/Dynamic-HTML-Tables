@@ -98,6 +98,9 @@ function changeTableLook(interval) {
 		// Obtain table to modify
 		var tbl = document.getElementById("mytable");
 
+		// Reset table
+		resetTable(tbl);
+
 		// Obtain date inputs to calculate number of weeks to be displayed
 		var dateFromInput = document.getElementById('dateFromInput').value;
 		var dateToInput = document.getElementById('dateToInput').value;
