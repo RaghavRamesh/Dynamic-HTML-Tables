@@ -1,18 +1,18 @@
-function dstrToUTC(ds) {
+function dateStringToUTC(dateString) {
 	// Converts date string to UTC format
 
-	var dsarr = ds.split("-");
-	var yy = parseInt(dsarr[0], 10);
-	var mm = parseInt(dsarr[1], 10);
-	var dd = parseInt(dsarr[2], 10);
-	return Date.UTC(yy, mm-1, dd, 0, 0, 0);
+	var dateStringArray = dateString.split("-");
+	var yy = parseInt(dateStringArray[0], 10);
+	var mm = parseInt(dateStringArray[1], 10);
+	var dd = parseInt(dateStringArray[2], 10);
+	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
 }
 
 function getDifferenceInWeeks(fromDate, toDate) {
 	// Calculates the difference in weeks given the start and end date
 
-	var d1 = dstrToUTC(fromDate);
-	var d2 = dstrToUTC(toDate);
+	var d1 = dateStringToUTC(fromDate);
+	var d2 = dateStringToUTC(toDate);
 	var oneweek = 86400000 * 7;
 	return Math.ceil((d2 - d1) / oneweek);
 }
