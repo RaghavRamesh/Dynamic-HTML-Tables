@@ -69,6 +69,17 @@ function deleteColumn(tbl, rowNumber, numberOfColumns) {
 	}
 }
 
+function resetTable(tbl)
+{
+	// Resets the table after submit
+
+	// Delete Period
+	deleteColumn(tbl, 0, 1);	
+
+	// Delete the 5 subcolumns of period
+	deleteColumn(tbl, 1, 5);
+}
+
 function getDayString(date) {
 	// Returns the day of the date in string format 
 
