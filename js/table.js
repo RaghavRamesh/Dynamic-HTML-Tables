@@ -10,6 +10,7 @@ function dstrToUTC(ds) {
 
 function getDifferenceInWeeks(fromDate, toDate) {
 	// Calculates the difference in weeks given the start and end date
+
 	var d1 = dstrToUTC(fromDate);
 	var d2 = dstrToUTC(toDate);
 	var oneweek = 86400000 * 7;
@@ -109,14 +110,16 @@ function changeTableLook(interval) {
 
 		// b. Calculate remaining days of that week
 		var numberOfRemainingDays = getRemainingDaysInTheWeek(convertedBeginningDate);
-		
+		// console.log("numberOfRemainingDays: ", numberOfRemainingDays);
 		// 2. Update new 'fromDate'
 		var newBeginningDate = getNewBeginningDate(convertedBeginningDate, numberOfRemainingDays);
 
 		// 3. Call calculateDifferenceInWeeks method
+		// Convert to input form in order to typecast into getDifferenceInWeeks parameters
 		newBeginningDate.setMonth(newBeginningDate.getMonth() + 1)
 		var newBgnDateString = newBeginningDate.getFullYear() + "-" + newBeginningDate.getMonth() + "-" + newBeginningDate.getDate()
 		var differenceInWeeks = getDifferenceInWeeks(newBgnDateString, dateToInput);
+		// console.log("difference: ", differenceInWeeks);
 
 		// Add as many additional columns as number of weeks
 		for (var i = 0; i < differenceInWeeks; i++) {
