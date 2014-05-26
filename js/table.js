@@ -1,22 +1,3 @@
-function dateStringToUTC(dateString) {
-	// Converts date string to UTC format
-
-	var dateStringArray = dateString.split("-");
-	var yy = parseInt(dateStringArray[0], 10);
-	var mm = parseInt(dateStringArray[1], 10);
-	var dd = parseInt(dateStringArray[2], 10);
-	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
-}
-
-function getDifferenceInWeeks(fromDate, toDate) {
-	// Calculates the difference in weeks given the start and end date
-
-	var d1 = dateStringToUTC(fromDate);
-	var d2 = dateStringToUTC(toDate);
-	var oneweek = 86400000 * 7;
-	return Math.ceil((d2 - d1) / oneweek);
-}
-
 function addRows(tbl) {
 	// Adds cells and test values for the respective columns
 
@@ -69,6 +50,16 @@ function convertToDate(date) {
 	return new Date(date[0], date[1] - 1, date[2]);
 } 
 
+function dateStringToUTC(dateString) {
+	// Converts date string to UTC format
+
+	var dateStringArray = dateString.split("-");
+	var yy = parseInt(dateStringArray[0], 10);
+	var mm = parseInt(dateStringArray[1], 10);
+	var dd = parseInt(dateStringArray[2], 10);
+	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
+}
+
 function getDayString(date) {
 	// Returns the day of the date in string format 
 
@@ -76,11 +67,13 @@ function getDayString(date) {
 	return days[date.getDay()];
 }
 
-function getRemainingDaysInTheWeek(beginningDate) {
-	// Returns the number of days left in the week, given a date 
+function getDifferenceInWeeks(fromDate, toDate) {
+	// Calculates the difference in weeks given the start and end date
 
-	var day = beginningDate.getDay();
-	return 6 - day;
+	var d1 = dateStringToUTC(fromDate);
+	var d2 = dateStringToUTC(toDate);
+	var oneweek = 86400000 * 7;
+	return Math.ceil((d2 - d1) / oneweek);
 }
 
 function getNewBeginningDate(date, numberOfRemainingDays) {
@@ -88,6 +81,13 @@ function getNewBeginningDate(date, numberOfRemainingDays) {
 
 	date.setDate(date.getDate() + numberOfRemainingDays + 1);
 	return date;
+}
+
+function getRemainingDaysInTheWeek(beginningDate) {
+	// Returns the number of days left in the week, given a date 
+
+	var day = beginningDate.getDay();
+	return 6 - day;
 }
 
 function changeTableLook(interval) {
