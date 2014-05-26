@@ -86,7 +86,7 @@ function getRemainingDaysInTheWeek(beginningDate) {
 function getNewBeginningDate(date, numberOfRemainingDays) {
 	// Returns the Sunday of the following week
 
-	date.setDate(date.getDate() + numberOfRemainingDays);
+	date.setDate(date.getDate() + numberOfRemainingDays + 1);
 	return date;
 }
 
@@ -118,7 +118,8 @@ function changeTableLook(interval) {
 		// Convert to input form in order to typecast into getDifferenceInWeeks parameters
 		newBeginningDate.setMonth(newBeginningDate.getMonth() + 1)
 		var newBgnDateString = newBeginningDate.getFullYear() + "-" + newBeginningDate.getMonth() + "-" + newBeginningDate.getDate()
-		var differenceInWeeks = getDifferenceInWeeks(newBgnDateString, dateToInput);
+		var differenceInWeeks = 1 + getDifferenceInWeeks(newBgnDateString, dateToInput);
+
 		// console.log("difference: ", differenceInWeeks);
 
 		// Add as many additional columns as number of weeks
