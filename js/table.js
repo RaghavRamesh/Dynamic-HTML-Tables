@@ -136,6 +136,9 @@ function resetTable(tbl)
 function changeTableLook(interval) {
 	// Main function that updates the look of the table
 
+	// Reset table after submit
+	resetTable(tbl);
+	
 	// If the chosen interval is week
 	if (interval == "week") {
 		var iDateFromInput = document.getElementById('dateFromInput').value;
