@@ -66,10 +66,9 @@ function dateStringToUTC(dateString) {
 
 	var dateStringArray = dateString.split("-");
 	var yy = parseInt(dateStringArray[0], 10);
-	var mm = parseInt(dateStringArray[1], 10);
+	var mm = parseInt(dateStringArray[1], 10) - 1;
 	var dd = parseInt(dateStringArray[2], 10);
-	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
-}
+	return Date.UTC(yy, mm, dd, 0, 0, 0);
 }
 
 function getDifferenceInWeeks(fromDate, toDate) {
