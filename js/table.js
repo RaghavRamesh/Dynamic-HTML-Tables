@@ -1,13 +1,3 @@
-function addRows(tbl) {
-	// Adds cells and test values for the respective columns
-
-	var tableBodyObject = tbl.tBodies[0];
-	for (var i = 0; i < tableBodyObject.rows.length; i++) {
-		var newCell = tableBodyObject.rows[i].insertCell(-1);
-		newCell.innerHTML = 'testing' +  i;
-	}
-}
-
 function addColumns(tbl, startDateOfWeek, endDateOfWeek) {
 	// Appends further columns to the table
 
@@ -43,12 +33,15 @@ function addColumns(tbl, startDateOfWeek, endDateOfWeek) {
 	addRows(tbl);
 }
 
-function convertToDate(date) {
-	// converts an html date input to JS Date() object
+function addRows(tbl) {
+	// Adds cells and test values for the respective columns
 
-	date = date.toString().split("-");
-	return new Date(date[0], date[1] - 1, date[2]);
-} 
+	var tableBodyObject = tbl.tBodies[0];
+	for (var i = 0; i < tableBodyObject.rows.length; i++) {
+		var newCell = tableBodyObject.rows[i].insertCell(-1);
+		newCell.innerHTML = 'testing' +  i;
+	}
+}
 
 function convertDateToString(date) {
 	// converts date to string
@@ -58,6 +51,13 @@ function convertDateToString(date) {
 	newDate = newDate.getFullYear() + "-" + newDate.getMonth() + "-" + newDate.getDate();
 	return newDate;
 }
+
+function convertToDate(date) {
+	// converts an html date input to JS Date() object
+
+	date = date.toString().split("-");
+	return new Date(date[0], date[1] - 1, date[2]);
+} 
 
 function dateStringToUTC(dateString) {
 	// Converts date string to UTC format
@@ -72,16 +72,9 @@ function dateStringToUTC(dateString) {
 function getDayName(date) {
 	// Returns the day name of the date in string format 
 
-	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 
+		'Friday', 'Saturday'];
 	return days[date.getDay()];
-}
-
-function getMonthName(date) {
-	// Returns the month name of the date in string format
-	
-	var monthNames = ["January", "February", "March", "April", "May", "June",
-    	"July", "August", "September", "October", "November", "December"];
-    return monthNames[date.getMonth()];
 }
 
 function getDifferenceInWeeks(fromDate, toDate) {
@@ -91,6 +84,14 @@ function getDifferenceInWeeks(fromDate, toDate) {
 	var d2 = dateStringToUTC(toDate);
 	var oneweek = 86400000 * 7;
 	return Math.ceil((d2 - d1) / oneweek);
+}
+
+function getMonthName(date) {
+	// Returns the month name of the date in string format
+
+	var monthNames = ["January", "February", "March", "April", "May", "June",
+    	"July", "August", "September", "October", "November", "December"];
+    return monthNames[date.getMonth()];
 }
 
 function getRemainingDaysInTheWeek(beginningDate) {
@@ -108,7 +109,7 @@ function setDateOffset(date, offset) {
 	return newDate;
 }
 
-
+// ------------------------------------------------------------------------------------------
 function resetTable(tbl)
 {
 	// Resets the table after submit
@@ -167,9 +168,11 @@ function changeTableLook(tbl, interval) {
 		- Convert them to JS Date type
 		- Calculate offset till end of the first week
 		- Calculate end date of the week
-		- Check if the end of the interval input is greater than the date calculated after offset
-		- Send the period values as parameters to addColumns() and calculate subsequent intervals 
-		by adding 1 and 7 to the previous end date until the toDate is smaller than the calc date
+		- Check if the end of the interval input is greater than the date calculated 
+		after offset
+		- Send the period values as parameters to addColumns() and calculate subsequent 
+		intervals by adding 1 and 7 to the previous end date until the toDate is 
+		smaller than the calc date
 		*/
 		
 		var fromDate = iDateFromInput;
@@ -206,7 +209,8 @@ function changeTableLook(tbl, interval) {
 } 
 
 var submit = function() {
-	// Calls the function that updates the look of the table when the submit button is pressed after input validation
+	// Calls the function that updates the look of the table when the submit 
+	// button is pressed after input validation
 	
 	var fromDate = document.getElementById('dateFromInput').value;
 	var toDate = document.getElementById('dateToInput').value;
