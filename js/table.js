@@ -47,8 +47,10 @@ function convertDateToString(date) {
 	// Converts date to string
 
 	var newDate = new Date(date);
-	newDate.setMonth(newDate.getMonth() + 1);
-	newDate = newDate.getFullYear() + "-" + newDate.getMonth() + "-" + newDate.getDate();
+	var dd = newDate.getDate();
+	var mm = newDate.getMonth() + 1;
+	var yy = newDate.getFullYear();
+	newDate = yy + "-" + mm + "-" + dd;
 	return newDate;
 }
 
