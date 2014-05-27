@@ -134,11 +134,11 @@ function changeTableLook(tbl, interval) {
 	// Reset table after submit
 	resetTable(tbl);
 	
+	var iDateFromInput = document.getElementById('dateFromInput').value;
+	var iDateToInput = document.getElementById('dateToInput').value;
+	
 	// If the chosen interval is week
 	if (interval == "week") {
-		var iDateFromInput = document.getElementById('dateFromInput').value;
-		var iDateToInput = document.getElementById('dateToInput').value;
-
 		/* 
 		Calculate weeks between the interval of dates
 
