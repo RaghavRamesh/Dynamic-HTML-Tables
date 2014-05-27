@@ -68,13 +68,6 @@ function dateStringToUTC(dateString) {
 	var dd = parseInt(dateStringArray[2], 10);
 	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
 }
-
-function getDayName(date) {
-	// Returns the day name of the date in string format 
-
-	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 
-		'Friday', 'Saturday'];
-	return days[date.getDay()];
 }
 
 function getDifferenceInWeeks(fromDate, toDate) {
@@ -84,14 +77,6 @@ function getDifferenceInWeeks(fromDate, toDate) {
 	var d2 = dateStringToUTC(toDate);
 	var oneweek = 86400000 * 7;
 	return Math.ceil((d2 - d1) / oneweek);
-}
-
-function getMonthName(date) {
-	// Returns the month name of the date in string format
-
-	var monthNames = ["January", "February", "March", "April", "May", "June",
-    	"July", "August", "September", "October", "November", "December"];
-    return monthNames[date.getMonth()];
 }
 
 function getRemainingDaysInTheWeek(beginningDate) {
