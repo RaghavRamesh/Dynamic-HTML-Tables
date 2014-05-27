@@ -145,14 +145,14 @@ function changeTableLook(tbl, interval) {
 	
 	// If the chosen interval is week
 	if (interval == "week") {
-		/* 
-		Calculate weeks between the interval of dates
-
-		- Calculate remaining days of that week
-		- Include the above week in calculating the difference
-		- Update new start date to the Sunday of next week
-		- Calculate difference in weeks for the remaining days (if any)
-		*/
+		/** 
+		 * Calculate weeks between the interval of dates
+         *
+		 * - Calculate remaining days of that week
+		 * - Include the above week in calculating the difference
+		 * - Update new start date to the Sunday of next week
+		 * - Calculate difference in weeks for the remaining days (if any)
+		 */
 
 		var dStartDate = convertToDate(iDateFromInput);
 		var numberOfRemainingDays = getRemainingDaysInTheWeek(dStartDate);
@@ -161,19 +161,19 @@ function changeTableLook(tbl, interval) {
 		
 		var differenceInWeeks = 1 + getDifferenceInWeeks(sNewStartDate, iDateToInput);
 
-		/* 
-		Calculate period
-
-		- Obtain date intervals
-		- Convert them to JS Date type
-		- Calculate offset till end of the first week
-		- Calculate end date of the week
-		- Check if the end of the interval input is greater than the date calculated 
-		after offset
-		- Send the period values as parameters to addColumns() and calculate subsequent 
-		intervals by adding 1 and 7 to the previous end date until the toDate is 
-		smaller than the calc date
-		*/
+		/** 
+		 * Calculate period
+         *
+	 	 * - Obtain date intervals
+		 * - Convert them to JS Date type
+		 * - Calculate offset till end of the first week
+		 * - Calculate end date of the week
+		 * - Check if the end of the interval input is greater than the date calculated 
+		 * after offset
+		 * - Send the period values as parameters to addColumns() and calculate subsequent 
+		 * intervals by adding 1 and 7 to the previous end date until the toDate is 
+		 * smaller than the calc date
+		 */
 		
 		var fromDate = iDateFromInput;
 		var toDate = iDateToInput;
