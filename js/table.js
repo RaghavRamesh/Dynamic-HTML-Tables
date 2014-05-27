@@ -44,7 +44,7 @@ function addRows(tbl) {
 }
 
 function convertDateToString(date) {
-	// converts date to string
+	// Converts date to string
 
 	var newDate = new Date(date);
 	newDate.setMonth(newDate.getMonth() + 1);
@@ -53,7 +53,7 @@ function convertDateToString(date) {
 }
 
 function convertToDate(date) {
-	// converts an html date input to JS Date() object
+	// Converts string to Date() object
 
 	date = date.toString().split("-");
 	return new Date(date[0], date[1] - 1, date[2]);
