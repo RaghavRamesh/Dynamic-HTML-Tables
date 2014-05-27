@@ -157,11 +157,32 @@ function changeTableLook(interval) {
 		var newBgnDateString = newBeginningDate.getFullYear() + "-" + newBeginningDate.getMonth() + "-" + newBeginningDate.getDate()
 		var differenceInWeeks = 1 + getDifferenceInWeeks(newBgnDateString, dateToInput);
 
-		// console.log("difference: ", differenceInWeeks);
+		// Obtain start and end dates of selected period
 
+		// Set period values
+		var fromDate = dateFromInput;
+		var toDate = dateToInput;
+
+		var convertedFromDate = convertToDate(fromDate);
+		var convertedToDate = convertToDate(toDate);
+		
+		var offset = getRemainingDaysInTheWeek(convertedFromDate);
+		
+		var convertedEndDate = setDateOffset(convertedFromDate, offset);
+		
+		var startDate = convertDateToString(convertedFromDate);
+		var endDate = convertDateToString(convertedEndDate);
+		
 		// Add as many additional columns as number of weeks
 		for (var i = 0; i < differenceInWeeks; i++) {
-			addColumns(tbl);	
+			addColumns(tbl, startDate, endDate);	
+			startDate = setDateOffset(endDate, 1);
+			endDate = setDateOffset(startDate, 6);
+			if (endDate > convertedToDate) {
+				endDate = convertedToDate;
+			}
+			startDate = convertDateToString(startDate);
+			endDate = convertDateToString(endDate);
 		}
 	} else if (interval == "month") {
 
