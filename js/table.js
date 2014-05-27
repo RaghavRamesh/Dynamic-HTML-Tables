@@ -76,6 +76,14 @@ function getDayName(date) {
 	return days[date.getDay()];
 }
 
+function getMonthName(date) {
+	// Returns the month name of the date in string format
+	
+	var monthNames = ["January", "February", "March", "April", "May", "June",
+    	"July", "August", "September", "October", "November", "December"];
+    return monthNames[date.getMonth()];
+}
+
 function getDifferenceInWeeks(fromDate, toDate) {
 	// Calculates the difference in weeks given the start and end date
 
