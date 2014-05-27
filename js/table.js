@@ -133,7 +133,7 @@ function resetTable(tbl)
 	}
 }
 
-function changeTableLook(interval) {
+function changeTableLook(tbl, interval) {
 	// Main function that updates the look of the table
 
 	// Reset table after submit
@@ -214,5 +214,7 @@ var submit = function() {
 		return;
 	}
 
-	changeTableLook(document.getElementById('chooseInterval').value);
+	var tbl = document.getElementById("mytable");
+	var interval = document.getElementById('chooseInterval').value
+	changeTableLook(tbl, interval);
 };
