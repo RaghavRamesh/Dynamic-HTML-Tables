@@ -86,8 +86,10 @@ function getDifferenceInWeeks(fromDate, toDate) {
 
 function setDateOffset(date, offset) {
 	// Returns the date after adding the offset
-
-	return date;
+	
+	var newDate = new Date(date);
+	newDate.setDate(newDate.getDate() + offset);
+	return newDate;
 }
 
 function getRemainingDaysInTheWeek(beginningDate) {
