@@ -8,7 +8,7 @@ function addRows(tbl) {
 	}
 }
 
-function addColumns(tbl, startDate, endDate) {
+function addColumns(tbl, startDateOfWeek, endDateOfWeek) {
 	// Appends further columns to the table
 
 	var tableHeadObject = tbl.tHead;
@@ -69,8 +69,8 @@ function dateStringToUTC(dateString) {
 	return Date.UTC(yy, mm - 1, dd, 0, 0, 0);
 }
 
-function getDayString(date) {
-	// Returns the day of the date in string format 
+function getDayName(date) {
+	// Returns the day name of the date in string format 
 
 	var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	return days[date.getDay()];
@@ -85,6 +85,13 @@ function getDifferenceInWeeks(fromDate, toDate) {
 	return Math.ceil((d2 - d1) / oneweek);
 }
 
+function getRemainingDaysInTheWeek(beginningDate) {
+	// Returns the number of days left in the week, given a date 
+
+	var day = beginningDate.getDay();
+	return 6 - day;
+}
+
 function setDateOffset(date, offset) {
 	// Returns the date after adding the offset
 	
@@ -93,12 +100,6 @@ function setDateOffset(date, offset) {
 	return newDate;
 }
 
-function getRemainingDaysInTheWeek(beginningDate) {
-	// Returns the number of days left in the week, given a date 
-
-	var day = beginningDate.getDay();
-	return 6 - day;
-}
 
 function resetTable(tbl)
 {
@@ -129,60 +130,62 @@ function changeTableLook(interval) {
 
 	// If the chosen interval is week
 	if (interval == "week") {
-		// Obtain table to modify
-		var tbl = document.getElementById("mytable");
+		var iDateFromInput = document.getElementById('dateFromInput').value;
+		var iDateToInput = document.getElementById('dateToInput').value;
 
-		// Reset table after submit
-		resetTable(tbl);
+		/* 
+		Calculate weeks between the interval of dates
 
-		// Obtain date inputs to calculate number of weeks to be displayed
-		var dateFromInput = document.getElementById('dateFromInput').value;
-		var dateToInput = document.getElementById('dateToInput').value;
+		- Calculate remaining days of that week
+		- Include the above week in calculating the difference
+		- Update new start date to the Sunday of next week
+		- Calculate difference in weeks for the remaining days (if any)
+		*/
 
-		// 1. Calculate difference in weeks
-
-		// a. Obtain the day of the first date
-		var convertedBeginningDate = convertToDate(dateFromInput);
-		var beginningDay = getDayString(convertedBeginningDate);
-
-		// b. Calculate remaining days of that week
-		var numberOfRemainingDays = getRemainingDaysInTheWeek(convertedBeginningDate);
-
-		// 2. Update new 'fromDate'
-		var newBeginningDate = setDateOffset(convertedBeginningDate, numberOfRemainingDays + 1);
-
-		// 3. Call calculateDifferenceInWeeks method
-		// Convert to input form in order to typecast into getDifferenceInWeeks parameters
-		newBeginningDate.setMonth(newBeginningDate.getMonth() + 1)
-		var newBgnDateString = newBeginningDate.getFullYear() + "-" + newBeginningDate.getMonth() + "-" + newBeginningDate.getDate()
-		var differenceInWeeks = 1 + getDifferenceInWeeks(newBgnDateString, dateToInput);
-
-		// Obtain start and end dates of selected period
-
-		// Set period values
-		var fromDate = dateFromInput;
-		var toDate = dateToInput;
-
-		var convertedFromDate = convertToDate(fromDate);
-		var convertedToDate = convertToDate(toDate);
+		var dStartDate = convertToDate(iDateFromInput);
+		var numberOfRemainingDays = getRemainingDaysInTheWeek(dStartDate);
+		var dNewStartDate = setDateOffset(dStartDate, numberOfRemainingDays + 1);
+		var sNewStartDate = convertDateToString(dNewStartDate);
 		
-		var offset = getRemainingDaysInTheWeek(convertedFromDate);
+		var differenceInWeeks = 1 + getDifferenceInWeeks(sNewStartDate, iDateToInput);
+
+		/* 
+		Calculate period
+
+		- Obtain date intervals
+		- Convert them to JS Date type
+		- Calculate offset till end of the first week
+		- Calculate end date of the week
+		- Check if the end of the interval input is greater than the date calculated after offset
+		- Send the period values as parameters to addColumns() and calculate subsequent intervals 
+		by adding 1 and 7 to the previous end date until the toDate is smaller than the calc date
+		*/
 		
-		var convertedEndDate = setDateOffset(convertedFromDate, offset);
+		var fromDate = iDateFromInput;
+		var toDate = iDateToInput;
+
+		var dFromDate = convertToDate(fromDate);
+		var dToDate = convertToDate(toDate);
 		
-		var startDate = convertDateToString(convertedFromDate);
-		var endDate = convertDateToString(convertedEndDate);
+		var offset = getRemainingDaysInTheWeek(dFromDate);
+		
+		var dEndDateOfWeek = setDateOffset(dFromDate, offset);
+		
+		dEndDateOfWeek = (dEndDateOfWeek > dToDate) ? dToDate : dEndDateOfWeek;
+
+		var sStartDateOfWeek = convertDateToString(dFromDate);
+		var sEndDateOfWeek = convertDateToString(dEndDateOfWeek);
 		
 		// Add as many additional columns as number of weeks
 		for (var i = 0; i < differenceInWeeks; i++) {
-			addColumns(tbl, startDate, endDate);	
-			startDate = setDateOffset(endDate, 1);
-			endDate = setDateOffset(startDate, 6);
-			if (endDate > convertedToDate) {
-				endDate = convertedToDate;
-			}
-			startDate = convertDateToString(startDate);
-			endDate = convertDateToString(endDate);
+			addColumns(tbl, sStartDateOfWeek, sEndDateOfWeek);	
+			
+			// Update the start and end of next week
+			dStartDateOfWeek = setDateOffset(sEndDateOfWeek, 1);
+			dEndDateOfWeek = setDateOffset(dStartDateOfWeek, 6);
+			dEndDateOfWeek = (dEndDateOfWeek > dToDate) ? dToDate : dEndDateOfWeek;
+			sStartDateOfWeek = convertDateToString(dStartDateOfWeek);
+			sEndDateOfWeek = convertDateToString(dEndDateOfWeek);
 		}
 	} else if (interval == "month") {
 
@@ -194,7 +197,6 @@ function changeTableLook(interval) {
 var submit = function() {
 	// Calls the function that updates the look of the table when the submit button is pressed after input validation
 	
-	// Validate from and to date
 	var fromDate = document.getElementById('dateFromInput').value;
 	var toDate = document.getElementById('dateToInput').value;
 	if (fromDate > toDate) {
