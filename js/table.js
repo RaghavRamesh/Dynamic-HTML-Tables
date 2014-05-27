@@ -80,6 +80,14 @@ function getDifferenceInWeeks(fromDate, toDate) {
 	return Math.ceil((d2 - d1) / oneweek);
 }
 
+function getMonthName(date) {
+	// Returns the month name of the date in string format
+
+	var monthNames = ["January", "February", "March", "April", "May", "June",
+    	"July", "August", "September", "October", "November", "December"];
+    return monthNames[date.getMonth()];
+}
+
 function getRemainingDaysInTheWeek(beginningDate) {
 	// Returns the number of days left in the week, given a date 
 
