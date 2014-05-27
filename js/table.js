@@ -4,7 +4,7 @@ function addColumns(tbl, startDateOfWeek, endDateOfWeek) {
 	var tableHeadObject = tbl.tHead;
 	var firstRowTH = document.createElement('th');
 	firstRowTH.setAttribute('colspan', 5);
-	firstRowTH.innerHTML = "Period -- " + startDateOfWeek + " - " + endDateOfWeek;
+	firstRowTH.innerHTML = "Period: " + startDateOfWeek + " - " + endDateOfWeek;
 	tableHeadObject.rows[0].appendChild(firstRowTH);
 
 	var subRow1TH = document.createElement('th');
