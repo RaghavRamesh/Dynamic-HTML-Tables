@@ -148,7 +148,7 @@ function changeTableLook(interval) {
 		var numberOfRemainingDays = getRemainingDaysInTheWeek(convertedBeginningDate);
 
 		// 2. Update new 'fromDate'
-		var newBeginningDate = setDateOffset(convertedBeginningDate, numberOfRemainingDays);
+		var newBeginningDate = setDateOffset(convertedBeginningDate, numberOfRemainingDays + 1);
 
 		// 3. Call calculateDifferenceInWeeks method
 		// Convert to input form in order to typecast into getDifferenceInWeeks parameters
