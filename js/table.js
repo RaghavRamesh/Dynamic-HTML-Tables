@@ -1,10 +1,16 @@
-function addColumns(tbl, startDateOfWeek, endDateOfWeek) {
+function addColumns(tbl, interval, options) {
 	// Appends further columns to the table
 
 	var tableHeadObject = tbl.tHead;
 	var firstRowTH = document.createElement('th');
 	firstRowTH.setAttribute('colspan', 5);
-	firstRowTH.innerHTML = "Period: " + startDateOfWeek + " - " + endDateOfWeek;
+	if (interval == "week") {
+		firstRowTH.innerHTML = "Period: " + options.startDate + " - " + options.endDate;
+	} else if (interval == "month") {
+		firstRowTH.innerHTML = "Period: " + options.monthName + ", " + options.startDate + " - " + options.endDate;
+	} else if (interval == "year") {
+		firstRowTH.innerHTML = "Period: " + options.year;
+	}
 	tableHeadObject.rows[0].appendChild(firstRowTH);
 
 	var subRow1TH = document.createElement('th');
@@ -186,7 +192,11 @@ function changeTableLook(tbl, interval) {
 		
 		// Add as many additional columns as number of weeks
 		for (var i = 0; i < differenceInWeeks; i++) {
-			addColumns(tbl, sStartDateOfWeek, sEndDateOfWeek);	
+			var options = {
+				'startDate': sStartDateOfWeek,
+				'endDate': sEndDateOfWeek
+			};
+			addColumns(tbl, interval, options);	
 			
 			// Update the start and end of next week
 			dStartDateOfWeek = setDateOffset(sEndDateOfWeek, 1);
