@@ -53,9 +53,10 @@ function convertToDate(date) {
 function convertDateToString(date) {
 	// converts date to string
 
-	date.setMonth(date.getMonth() + 1);
-	date = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-	return date;
+	var newDate = new Date(date);
+	newDate.setMonth(newDate.getMonth() + 1);
+	newDate = newDate.getFullYear() + "-" + newDate.getMonth() + "-" + newDate.getDate();
+	return newDate;
 }
 
 function dateStringToUTC(dateString) {
