@@ -197,9 +197,9 @@ function changeTableLook(tbl, interval) {
 		var dFromDate = convertToDate(iDateFromInput);
 		var dToDate = convertToDate(iDateToInput);
 		
-		var offset = getRemainingDaysInTheWeek(dFromDate);
+		var remainingDaysInWeek = getRemainingDaysInTheWeek(dFromDate);
 		
-		var dEndDateOfWeek = setDateOffset(dFromDate, offset);
+		var dEndDateOfWeek = setDateOffset(dFromDate, remainingDaysInWeek);
 		
 		dEndDateOfWeek = (dEndDateOfWeek > dToDate) ? dToDate : dEndDateOfWeek;
 
