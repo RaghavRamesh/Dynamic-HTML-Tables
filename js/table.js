@@ -244,6 +244,22 @@ function changeTableLook(tbl, interval) {
 		/** 
 		 * Call addColumns based on the number of months
 		 */
+		for (var i = 0; i < differenceInMonths; i++) {
+			var options = {
+				'monthName': getMonthName(dStartDate),
+				'startDate': sStartDate,
+				'endDate': sEndDate
+			};
+			addColumns(tbl, interval, options);
+
+			// Update the start and end of the next month
+			dStartDate = setDateOffset(dEndDate, 1);
+			var daysInMonth = dStartDate.getDaysInMonth();
+			dEndDate = setDateOffset(dStartDate, daysInMonth - 1);
+			dEndDate = (dEndDate > dToDate) ? dToDate : dEndDate;
+			sStartDate = convertDateToString(dStartDate);
+			sEndDate = convertDateToString(dEndDate);
+		} 
 	} else if (interval == "year") {
 
 	}
