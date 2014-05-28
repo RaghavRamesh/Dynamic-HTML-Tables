@@ -222,7 +222,21 @@ function changeTableLook(tbl, interval) {
 			sEndDateOfWeek = convertDateToString(dEndDateOfWeek);
 		}
 	} else if (interval == "month") {
+		/** 
+		 * Calculate months between the interval of dates
+		 * 
+		 * - get remaining number of days in the first month
+		 * - include that in differenceInMonths
+		 * - update the new date
+		 * - calculate the difference in months (if any)
+		 */
 
+		/** 
+		 * Calculate period 		
+		 */
+		/** 
+		 * Call addColumns based on the number of months
+		 */
 	} else if (interval == "year") {
 
 	}
