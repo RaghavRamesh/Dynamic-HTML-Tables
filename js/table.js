@@ -77,7 +77,7 @@ function dateStringToUTC(dateString) {
 	return Date.UTC(yy, mm, dd, 0, 0, 0);
 }
 
-function getDIM(fromDate, toDate) {
+function getDifferenceInMonths(fromDate, toDate) {
 	var differenceInMonths = 0;
 	while (fromDate <= toDate) {
 		differenceInMonths++;
