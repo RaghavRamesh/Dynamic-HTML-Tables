@@ -236,6 +236,11 @@ function changeTableLook(tbl, interval) {
 		/** 
 		 * Calculate period 		
 		 */
+		var dStartDate = dFromDate; 
+		var dEndDate = setDateOffset(dStartDate, remainingDaysInMonth);
+		var sStartDate = convertDateToString(dStartDate);
+		var sEndDate = convertDateToString(dEndDate);
+
 		/** 
 		 * Call addColumns based on the number of months
 		 */
