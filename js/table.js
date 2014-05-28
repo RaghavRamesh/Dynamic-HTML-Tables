@@ -86,6 +86,16 @@ function getDifferenceInMonths(fromDate, toDate) {
 	return Math.ceil((d2-d1) / onemonth);
 }
 
+function getDIM(fromDate, toDate) {
+	var differenceInMonths = 0;
+	while (fromDate <= toDate) {
+		differenceInMonths++;
+		var daysInMonth = fromDate.getDaysInMonth();
+		fromDate = setDateOffset(fromDate, daysInMonth);	
+	}
+	return differenceInMonths;
+}
+
 function getDifferenceInWeeks(fromDate, toDate) {
 	// Calculates the difference in weeks given the start and end date
 
