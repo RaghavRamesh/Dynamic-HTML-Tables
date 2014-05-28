@@ -9,7 +9,7 @@ function addColumns(tbl, interval, options) {
 	} else if (interval == "month") {
 		firstRowTH.innerHTML = "Period: " + options.monthName + ", " + options.startDate + " - " + options.endDate;
 	} else if (interval == "year") {
-		firstRowTH.innerHTML = "Period: " + options.year;
+		firstRowTH.innerHTML = "Period: " + options.year + ", " + options.startDate + " - " + options.endDate;
 	}
 	tableHeadObject.rows[0].appendChild(firstRowTH);
 
