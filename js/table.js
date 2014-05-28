@@ -194,11 +194,8 @@ function changeTableLook(tbl, interval) {
 		 * smaller than the calc date
 		 */
 		
-		var fromDate = iDateFromInput;
-		var toDate = iDateToInput;
-
-		var dFromDate = convertToDate(fromDate);
-		var dToDate = convertToDate(toDate);
+		var dFromDate = convertToDate(iDateFromInput);
+		var dToDate = convertToDate(iDateToInput);
 		
 		var offset = getRemainingDaysInTheWeek(dFromDate);
 		
