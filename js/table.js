@@ -78,6 +78,8 @@ function dateStringToUTC(dateString) {
 }
 
 function getDifferenceInMonths(fromDate, toDate) {
+	// Calculates the difference in months given the start and end date
+	
 	var differenceInMonths = 0;
 	while (fromDate <= toDate) {
 		differenceInMonths++;
