@@ -222,6 +222,17 @@ function changeTableLook(tbl, interval) {
 		 * - calculate the difference in months (if any)
 		 */
 
+		var dFromDate = convertToDate(iDateFromInput);
+		var dToDate = convertToDate(iDateToInput);
+
+		var differenceInMonths = 0;
+		var daysInMonth = dFromDate.getDaysInMonth();
+		var remainingDaysInMonth = daysInMonth - dFromDate.getDate();
+		var differenceInMonths = differenceInMonths + 1;
+		var dNewStartDate = setDateOffset(dFromDate, remainingDaysInMonth + 1);
+
+		differenceInMonths = differenceInMonths + getDifferenceInMonths(dNewStartDate, dToDate);
+
 		/** 
 		 * Calculate period 		
 		 */
