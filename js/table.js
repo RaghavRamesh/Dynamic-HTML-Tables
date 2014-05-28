@@ -77,6 +77,15 @@ function dateStringToUTC(dateString) {
 	return Date.UTC(yy, mm, dd, 0, 0, 0);
 }
 
+function getDifferenceInMonths(fromDate, toDate) {
+	// Calculates the difference in months given the start and end date
+
+	var d1 = dateStringToUTC(fromDate);
+	var d2 = dateStringToUTC(toDate);
+	var onemonth = 86400000 * 31;
+	return Math.ceil((d2-d1) / onemonth);
+}
+
 function getDifferenceInWeeks(fromDate, toDate) {
 	// Calculates the difference in weeks given the start and end date
 
