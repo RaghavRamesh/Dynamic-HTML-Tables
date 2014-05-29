@@ -281,6 +281,8 @@ function changeTableLook(tbl, interval) {
 			sEndDate = convertDateToString(dEndDate);
 		} 
 	} else if (interval == "year") {
+		// Calculate difference in years
+		var differenceInYears = getDifferenceInYears(dFromDate, dToDate);
 
 	}
 } 
