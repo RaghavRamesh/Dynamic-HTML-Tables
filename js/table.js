@@ -256,17 +256,13 @@ function changeTableLook(tbl, interval) {
 
 		differenceInMonths = differenceInMonths + getDifferenceInMonths(dNewStartDate, dToDate);
 
-		/** 
-		 * Calculate period 		
-		 */
+		// Calculate period
 		var dStartDate = dFromDate; 
 		var dEndDate = setDateOffset(dStartDate, remainingDaysInMonth);
 		var sStartDate = convertDateToString(dStartDate);
 		var sEndDate = convertDateToString(dEndDate);
 
-		/** 
-		 * Call addColumns based on the number of months
-		 */
+		// Call addColumns based on the number of months
 		for (var i = 0; i < differenceInMonths; i++) {
 			var options = {
 				'monthName': getMonthName(dStartDate),
