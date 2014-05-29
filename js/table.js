@@ -77,6 +77,14 @@ function dateStringToUTC(dateString) {
 	return Date.UTC(yy, mm, dd, 0, 0, 0);
 }
 
+function getDayOfYear(date) {
+	// Returns the day number of the date of that year
+
+	var firstJan = new Date(date.getFullYear(), 0, 1);
+	var dayNumber = date - firstJan;
+	return dayNumber/86400000;
+}
+
 function getDifferenceInMonths(fromDate, toDate) {
 	// Calculates the difference in months given the start and end date
 	
