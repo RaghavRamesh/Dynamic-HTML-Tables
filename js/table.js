@@ -292,6 +292,23 @@ function changeTableLook(tbl, interval) {
 		var sStartDate = convertDateToString(dStartDate);
 		var sEndDate = convertDateToString(dEndDate);
 
+		// Call addColumns based on number of years
+		for (var i = 0; i < differenceInYears; i++) {
+			var options = {
+				'year': dStartDate.getFullYear(),
+				'startDate': sStartDate,
+				'endDate': sEndDate
+			};
+			addColumns(tbl, interval, options);
+
+			// Update period
+			dStartDate = setDateOffset(dEndDate, 1);
+			var numberOfDaysInYear = dStartDate.isLeapYear() ? 366 : 365;
+			dEndDate = setDateOffset(dStartDate, numberOfDaysInYear - 1);
+			dEndDate = (dEndDate > dToDate) ? dToDate : dEndDate;
+			sStartDate = convertDateToString(dStartDate);
+			sEndDate = convertDateToString(dEndDate);
+		}
 	}
 } 
 
