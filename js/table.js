@@ -284,6 +284,14 @@ function changeTableLook(tbl, interval) {
 		// Calculate difference in years
 		var differenceInYears = getDifferenceInYears(dFromDate, dToDate);
 
+		// Calculate period
+		var dStartDate = dFromDate;
+		var remainingDaysInYear = getRemainingDaysInYear(dFromDate);
+		var dEndDate = setDateOffset(dStartDate, remainingDaysInYear - 1);
+		dEndDate = (dEndDate > dToDate) ? dToDate : dEndDate;
+		var sStartDate = convertDateToString(dStartDate);
+		var sEndDate = convertDateToString(dEndDate);
+
 	}
 } 
 
