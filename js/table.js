@@ -106,6 +106,14 @@ function getDifferenceInWeeks(fromDate, toDate) {
 	return Math.ceil((d2 - d1) / oneweek);
 }
 
+function getDifferenceInYears(fromDate, toDate) {
+	// Calculates the difference in years given the start and the end date
+
+	var difference = 1;
+	difference += toDate.getFullYear() - fromDate.getFullYear();
+	return difference;
+}
+
 function getMonthName(date) {
 	// Returns the month name of the date in string format
 
