@@ -178,6 +178,9 @@ function changeTableLook(tbl, interval) {
 	
 	var iDateFromInput = document.getElementById('dateFromInput').value;
 	var iDateToInput = document.getElementById('dateToInput').value;
+
+	var dFromDate = convertToDate(iDateFromInput);
+	var dToDate = convertToDate(iDateToInput);
 	
 	// If the chosen interval is week
 	if (interval == "week") {
@@ -210,9 +213,6 @@ function changeTableLook(tbl, interval) {
 		 * intervals by adding 1 and 7 to the previous end date until the toDate is 
 		 * smaller than the calc date
 		 */
-		
-		var dFromDate = convertToDate(iDateFromInput);
-		var dToDate = convertToDate(iDateToInput);
 		
 		var remainingDaysInWeek = getRemainingDaysInWeek(dFromDate);
 		
@@ -247,9 +247,6 @@ function changeTableLook(tbl, interval) {
 		 * - update the new date
 		 * - calculate the difference in months (if any)
 		 */
-
-		var dFromDate = convertToDate(iDateFromInput);
-		var dToDate = convertToDate(iDateToInput);
 
 		var differenceInMonths = 0;
 		var daysInMonth = dFromDate.getDaysInMonth();
