@@ -122,7 +122,7 @@ function getMonthName(date) {
     return monthNames[date.getMonth()];
 }
 
-function getRemainingDaysInTheWeek(beginningDate) {
+function getRemainingDaysInWeek(beginningDate) {
 	// Returns the number of days left in the week, given a date 
 
 	var day = beginningDate.getDay();
@@ -183,7 +183,7 @@ function changeTableLook(tbl, interval) {
 		 */
 
 		var dStartDate = convertToDate(iDateFromInput);
-		var numberOfRemainingDays = getRemainingDaysInTheWeek(dStartDate);
+		var numberOfRemainingDays = getRemainingDaysInWeek(dStartDate);
 		var dNewStartDate = setDateOffset(dStartDate, numberOfRemainingDays + 1);
 		var sNewStartDate = convertDateToString(dNewStartDate);
 		
@@ -206,7 +206,7 @@ function changeTableLook(tbl, interval) {
 		var dFromDate = convertToDate(iDateFromInput);
 		var dToDate = convertToDate(iDateToInput);
 		
-		var remainingDaysInWeek = getRemainingDaysInTheWeek(dFromDate);
+		var remainingDaysInWeek = getRemainingDaysInWeek(dFromDate);
 		
 		var dEndDateOfWeek = setDateOffset(dFromDate, remainingDaysInWeek);
 		
