@@ -129,6 +129,14 @@ function getRemainingDaysInWeek(beginningDate) {
 	return 6 - day;
 }
 
+function getRemainingDaysInYear(beginningDate) {
+	// Returns the remaining days in the year given the beginning date
+
+	var numberOfDaysInYear = beginningDate.isLeapYear() ? 366 : 365;
+	var remainingDaysInYear = numberOfDaysInYear - getDayOfYear(beginningDate);
+	return remainingDaysInYear;
+}
+
 function setDateOffset(date, offset) {
 	// Returns the date after adding the offset
 	
