@@ -1,0 +1,1 @@
+$('#intervalInput').multiselect();
