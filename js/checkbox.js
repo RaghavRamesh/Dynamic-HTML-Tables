@@ -1,1 +1,3 @@
-$('#intervalInput').multiselect();
+$('#intervalInput').multiselect({
+	noneSelectedText: 'Choose an option'
+});
